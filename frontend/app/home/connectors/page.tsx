@@ -6,8 +6,8 @@ import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
 export default function Page() {
-  const [iframeUrl, setIframeUrl] = useState<string | undefined>();
-  const [partnerOrigin, setPartnerOrigin] = useState<string>("");
+  const [iframeUrl] = useState<string | undefined>();
+  const [partnerOrigin] = useState<string>("");
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { theme } = useTheme();
 
@@ -38,10 +38,10 @@ export default function Page() {
       body: JSON.stringify(data),
     }).then(async (response) => {
       const respJSON = await response.json();
-      const popup = window.open(respJSON.sessionUrl, "authPopup",
+      window.open(respJSON.sessionUrl, "authPopup",
       `width=500,height=600,left=${window.screen.width / 2 - 500 / 2},top=${window.screen.height / 2 - 600 / 2},resizable=yes,scrollbars=yes,noopener=no,noreferrer=no`);
 
-      const handleMessage = (event:any) => {
+      const handleMessage = (event: MessageEvent) => {
         console.log("event", event.origin)
   
         console.log("Popup'tan gelen mesaj:", event.data);
