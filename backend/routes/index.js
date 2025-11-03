@@ -115,7 +115,6 @@ router.post("/connect", authenticateToken, function (req, res, next) {
       connectorType,
       catalogCreateEnabled
     ).then((data) => {
-      console.log(data);
       res.send({
         sessionUrl: data.sessionUrl,
         partnerOrigin: data.partnerOrigin,
