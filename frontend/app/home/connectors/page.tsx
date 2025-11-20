@@ -66,7 +66,7 @@ export default function Page() {
           <iframe
             src={`${iframeUrl}`}
             width={"100%"}
-            allow="clipboard-write *"
+            allow="clipboard-write https://partner.peaka.studio"
             ref={iframeRef}
             style={{height: "calc(100vh - 64px - 4rem)"}}
           />
